@@ -1,45 +1,48 @@
-const buttons = document.getElementsByClassName('.buttons');
-const results = document.getElementsByClassName('.result');
-const plus = document.getElementById('.btn-+');
-const min = document.getElementById('.btn--');
-const mosavi = document.getElementById('.btn-=');
-const backslash = document.getElementById('.btn=/');
-const zarb = document.getElementById('.btn-*');
-const tavan = document.getElementById('.btn-**');
+const buttons = document.querySelector('.buttons');
+const display = document.querySelector('.result');
+const plus = document.getElementById('btn-+');
+const min = document.getElementById('btn--');
+const mosavi = document.getElementById('btn-=');
+const backslash = document.getElementById('btn=');
+const zarb = document.getElementById('btn-*');
+const tavan = document.getElementById('btn-**');
 
 
-const the = '';
-const memory = 0;
+let the = '';
+let memory = 0;
 
 
-buttons.addEventlistener('click' , inputNumber)
+buttons.addEventListener('click' , inputNumber);
 function inputNumber(event){
-    let data = event.target.dataset.input;
+    const data = event.target.dataset.input;
+    if(data ==! undefined){
+        display.value += data
+    }
 }
 
 
 min.addEventListener('click' , () =>{
     the = 'minus';
-    memory = Number(display.textContent);
-    display.textContent = 0;
+    memory = Number(display.value);
+    display.value = ' ';
 });
 plus.addEventListener('click' , () =>{
     the = 'plus';
-    memory = Number(display.textContent);
-    display.textContent = 0;
+    memory = Number(display.value);
+    display.value = ' ';
 });
 backslash.addEventListener('click' , () =>{
     the = 'divide';
-    memory = Number(display.textContent);
-    display.textContent = 0;
+    memory = Number(display.value);
+    display.value = ' ';
 });
 zarb.addEventListener('click' , () =>{
     the = 'zarb';
-    memory = Number(display.textContent);
-    display.textContent = 0;
+    memory = Number(display.value);
+    display.value = ' ';
 });
 tavan.addEventListener('click' , () =>{
     the = 'tavan';
-    memory = Number(display.textContent);
-    display.textContent = 0;
+    memory = Number(display.value);
+    display.value = ' ';
 });
