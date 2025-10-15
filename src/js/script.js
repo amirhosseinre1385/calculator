@@ -1,48 +1,23 @@
-const buttons = document.querySelector('.buttons');
-const display = document.querySelector('.result');
-const plus = document.getElementById('btn-+');
-const min = document.getElementById('btn--');
-const mosavi = document.getElementById('btn-=');
-const backslash = document.getElementById('btn=');
-const zarb = document.getElementById('btn-*');
-const tavan = document.getElementById('btn-**');
+const output = document.querySelector('.result');
+const vals = document.querySelectorAll('.val');
+const clearBtn = document.querySelector('.AC');
+const deleteBtn = document.querySelector('.DEL');
+const equalBtn = document.querySelector('.equal');
 
-
-let the = '';
-let memory = 0;
-
-
-buttons.addEventListener('click' , inputNumber);
-function inputNumber(event){
-    const data = event.target.dataset.input;
-    if(data ==! undefined){
-        display.value += data
-    }
-}
-
-
-min.addEventListener('click' , () =>{
-    the = 'minus';
-    memory = Number(display.value);
-    display.value = ' ';
+vals.forEach((val) => {
+    val.addEventListener("click", () => {
+        output.value += val.value;
+    });
 });
-plus.addEventListener('click' , () =>{
-    the = 'plus';
-    memory = Number(display.value);
-    display.value = ' ';
+
+clearBtn.addEventListener("click", () => {
+    output.value = " ";
 });
-backslash.addEventListener('click' , () =>{
-    the = 'divide';
-    memory = Number(display.value);
-    display.value = ' ';
+
+deleteBtn.addEventListener("click", () => {
+    output.value = output.value.slice(0,-1);
 });
-zarb.addEventListener('click' , () =>{
-    the = 'zarb';
-    memory = Number(display.value);
-    display.value = ' ';
-});
-tavan.addEventListener('click' , () =>{
-    the = 'tavan';
-    memory = Number(display.value);
-    display.value = ' ';
+
+equalBtn.addEventListener("click", () => {
+    output.value = eval(output.value);
 });
